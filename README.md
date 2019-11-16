@@ -13,7 +13,11 @@
 # 程序安装:
   程序不自带一键安装,手动导入dy.sql数据库文件,
   修改/public/config.php配置数据库信息  
-  修改/class/Model.class.php 数据库信息
+  修改/class/Model.class.php 数据库信息  
+  后台用户账号:  
+  admin  
+  后台用户密码:  
+  123456
 
 # 特别说明:
   验证码接口token和支付宝在线支付接口为了安全,均已注释.请替换成自己的接口key.
