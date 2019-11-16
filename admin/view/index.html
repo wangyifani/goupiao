@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+<title>后台管理系统</title>
+  <link rel="stylesheet" href="./include/css/app.min.css">
+  <link rel="stylesheet" href="./include/bundles/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="./include/bundles/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="./include/bundles/codemirror/theme/duotone-dark.css">
+  <link rel="stylesheet" href="./include/bundles/jquery-selectric/selectric.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="./include/css/style.css">
+  <link rel="stylesheet" href="./include/css/components.css">
+  <!-- Custom style CSS -->
+  <link rel="stylesheet" href="./include/css/custom.css">
+<!-- <link rel='shortcut icon' type='image/x-icon' href='./include/images/login-logo.png'/> -->
+</head>
+<body>
+<div class="loader"></div>
+<div id="app">
+	<div class="main-wrapper">
+		<div class="navbar-bg"></div>
+		<nav class="navbar navbar-expand-lg main-navbar">
+		  <div class="form-inline mr-auto">
+			<ul class="navbar-nav mr-3">
+			  <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+									  collapse-btn"> <i data-feather="align-justify"></i></a></li>
+			  <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
+				  <i data-feather="maximize"></i>
+				</a></li>
+			  <li>
+			  </li>
+			</ul>
+		  </div>
+		  <ul class="navbar-nav navbar-right">
+			<li class=""><a href="index.php?m=index&a=out" class="nav-link" title="退出登录"><i data-feather="log-out"></i> </a>
+			</li>
+		  </ul>
+		</nav>
+		<!-- 左侧栏开始 -->
+		<div class="main-sidebar">
+			<aside id="sidebar-wrapper">
+			<div class="sidebar-brand">
+				<a href="./index.php?m=index&a=index"><span class="logo-name">后台管理系统</span>
+				</a>
+			</div>
+			<div class="sidebar-user">
+				<div class="sidebar-user-picture">
+					<img alt="image" src="./include/images/user.png">
+				</div>
+				<div class="sidebar-user-details">
+					<div class="user-name">
+
+					</div>
+					<div class="user-role">
+
+					</div>
+				</div>
+			</div>
+			<ul class="sidebar-menu">
+				<li class="dropdown">
+					<a href="./index.php?m=index"><i data-feather="plus-circle"></i><span>添加新影片</span></a>
+				</li>
+				<li class="dropdown">
+					<a href="./index.php?m=article&a=changci"><i data-feather="plus-circle"></i><span>添加场次</span></a>
+				</li>
+				<li class="dropdown">
+					<a href="./index.php?m=article&a=show"><i data-feather="video"></i><span>影片管理</span></a>
+				</li>
+				<li class="dropdown">
+					<a href="./index.php?m=user&a=show"><i data-feather="users"></i><span>用户管理</span></a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="nav-link has-dropdown"><i data-feather="settings"></i><span>站点管理员</span></a>
+				</li>
+			</ul>
+			</aside>
+		</div>
+		<!-- 左侧栏结束 -->
+		<div class="main-content">
+            <div class="row">
+				<div class="col-12">
+				  <div class="card">
+					<div class="card-header">
+					  <h4>添加新影片</h4>
+					</div>
+						<form action="./index.php?m=article&a=doadd" method="post" enctype="multipart/form-data">
+							<div class="card-body">
+								<div style="width: 100%;height:30px;text-align:center;color:red;">
+									注意: 添加新影片后需要再继续给新影片添加场次.
+								</div>
+							<div class="form-group row mb-4">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">影片名:</label>
+								<div class="col-sm-7 col-md-3">
+								<input type="text" name="m_name" class="form-control">
+								</div>
+								<label class="col-form-label">主演:</label>
+								<div class="col-sm-7 col-md-3">
+									<input type="text" name="actor" class="form-control">
+								</div>
+
+							</div>
+
+							<div class="form-group row mb-4">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">导演:</label>
+								<div class="col-sm-4 col-md-2">
+									<input type="text" name="m_director" class="form-control">
+								</div>
+								<label class="col-form-label">总时长:</label>
+								<div class="col-sm-4 col-md-1">
+									<input type="text" name="w" class="form-control">
+								</div>
+								<label class="col-form-label">单价:</label>
+								<div class="col-sm-4 col-md-1">
+									<input type="text" name="m_price" class="form-control" placeholder="0元">
+								</div>
+								<label class="col-form-label">版本:</label>
+								<div class="col-sm-4 col-md-2">
+									<!-- <input type="text" name="title" class="form-control"> -->
+									<select class="form-control selectric" name="m_version">
+										<option value="2D">2D</option>
+										<option value="3D">3D</option>
+										<option value="3D">MAX</option>
+									</select>
+								</div>
+
+							</div>
+							<div class="form-group row mb-4">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">影片类型:</label>
+								<div class="col-sm-4 col-md-2">
+									<input type="text" name="m_type" class="form-control" placeholder="冒险/家庭/奇幻">
+								</div>
+								<input type="hidden" name="m_color" value="#666699" class="form-control">
+								<label class="col-form-label">语言:</label>
+								<div class="col-sm-4 col-md-1">
+									<input type="text" name="laguage" class="form-control" placeholder="国语">
+								</div>
+								<label class="col-form-label">国家:</label>
+								<div class="col-sm-4 col-md-2">
+									<input type="text" name="country_area" class="form-control">
+								</div>
+
+
+							</div>
+
+							<div class="form-group row mb-4">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">状态:</label>
+								<div class="col-sm-7 col-md-3">
+									<input type="radio" class="radio-inline" name="status" value="1" checked>上映
+									<input type="radio" class="radio-inline" name="status" value="0">下架
+								</div>
+
+							</div>
+
+							<!-- <div class="form-group row mb-4">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">文章类别</label>
+								<div class="col-sm-12 col-md-7">
+<select class="form-control selectric" name="typeid">
+	<option value="xz">--请选择--</option>
+
+</select>
+								</div>
+							</div> -->
+
+							<div class="form-group row mb-4">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">影片封面</label>
+								<div class="col-sm-12 col-md-7">
+									<div id="image-preview" class="image-preview">
+										<label for="image-upload" id="image-label">选择文件</label>
+										<input type="file" name="pic" id="image-upload" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group row mb-4">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">影片简介</label>
+								<div class="col-sm-12 col-md-7">
+								<textarea class="summernote" name="content"></textarea>
+								</div>
+							</div>
+							<div class="form-group row mb-4">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+								<div class="col-sm-12 col-md-7">
+								<button class="btn btn-primary">新增影片</button>
+								</div>
+							</div>
+							</div>
+						</form>
+				  </div>
+				</div>
+			  </div>
+		</div>
+	</div>
+</div>
+<script src="./include/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="./include/bundles/summernote/summernote-bs4.js"></script>
+<script src="./include/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+<script src="./include/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
+<script src="./include/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+<!-- Page Specific JS File -->
+<script src="./include/js/page/create-post.js"></script>
+<!-- Template JS File -->
+<script src="./include/js/scripts.js"></script>
+<!-- Custom JS File -->
+<script src="./include/js/custom.js"></script>
+</body>
+</html>

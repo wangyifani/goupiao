@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+	<title>添加影片场次</title>
+	<link rel="stylesheet" href="./include/css/app.min.css">
+	<link rel="stylesheet" href="./include/bundles/summernote/summernote-bs4.css">
+	<link rel="stylesheet" href="./include/bundles/codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="./include/bundles/codemirror/theme/duotone-dark.css">
+	<link rel="stylesheet" href="./include/bundles/jquery-selectric/selectric.css">
+	<!-- Template CSS -->
+	<link rel="stylesheet" href="./include/css/style.css">
+	<link rel="stylesheet" href="./include/css/components.css">
+	<!-- Custom style CSS -->
+	<link rel="stylesheet" href="./include/css/custom.css">
+	<!-- <link rel='shortcut icon' type='image/x-icon' href='./include/images/login-logo.png'/> -->
+</head>
+
+<body>
+	<div class="loader"></div>
+	<div id="app">
+		<div class="main-wrapper">
+			<div class="navbar-bg"></div>
+			<nav class="navbar navbar-expand-lg main-navbar">
+				<div class="form-inline mr-auto">
+					<ul class="navbar-nav mr-3">
+						<li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+									  collapse-btn"> <i data-feather="align-justify"></i></a></li>
+						<li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
+								<i data-feather="maximize"></i>
+							</a></li>
+						<li>
+						</li>
+					</ul>
+				</div>
+				<ul class="navbar-nav navbar-right">
+					<li class=""><a href="index.php?m=index&a=out" class="nav-link" title="退出登录"><i data-feather="log-out"></i> </a>
+					</li>
+				</ul>
+			</nav>
+			<!-- 左侧栏开始 -->
+			<div class="main-sidebar">
+				<aside id="sidebar-wrapper">
+					<div class="sidebar-brand">
+						<a href="./index.php?m=index&a=index"><span class="logo-name">后台管理系统</span>
+						</a>
+					</div>
+					<div class="sidebar-user">
+						<div class="sidebar-user-picture">
+							<img alt="image" src="./include/images/user.png">
+						</div>
+						<div class="sidebar-user-details">
+							<div class="user-name">
+
+							</div>
+							<div class="user-role">
+
+							</div>
+						</div>
+					</div>
+					<ul class="sidebar-menu">
+						<li class="dropdown">
+							<a href="./index.php?m=index"><i data-feather="plus-circle"></i><span>添加新影片</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="./index.php?m=article&a=changci"><i data-feather="plus-circle"></i><span>添加场次</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="./index.php?m=article&a=show"><i data-feather="video"></i><span>影片管理</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="./index.php?m=user&a=show"><i data-feather="users"></i><span>用户管理</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="nav-link has-dropdown"><i data-feather="settings"></i><span>站点管理员</span></a>
+						</li>
+					</ul>
+				</aside>
+			</div>
+			<!-- 左侧栏结束 -->
+			<div class="main-content">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-header">
+								<h4>给影片添加场次和观影大厅</h4>
+							</div>
+							<form action="./index.php?m=article&a=dochangci" method="post" name="addForm">
+								<div class="card-body">
+									<div class="form-group row mb-4">
+										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">选择要新增场次的影片</label>
+										<div class="col-sm-12 col-md-5">
+											<select class="form-control selectric" name="m_id">
+												<option value="xz">--请选择 (默认新增影片在第一个)--</option>
+												<?php
+												foreach ($movie as $v) {
+													echo "<option time='{$v['m_time']}' value='{$v['id']}'>{$v['m_name']}</option>";
+												}
+												?>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group row mb-4">
+										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">开始时间:</label>
+										<div class="col-sm-4 col-md-2">
+											<input type="text" name="start_time" class="form-control" placeholder="例如:10:30">
+										</div>
+										<label class="col-form-label">结束时间:</label>
+										<div class="col-sm-4 col-md-2">
+											<input type="text" name="end_time" class="form-control" />
+										</div>
+										<label class="col-form-label">座位数:</label>
+										<div class="col-sm-4 col-md-1">
+											<input type="text" name="seating" class="form-control" />
+										</div>
+
+
+									</div>
+
+									<div class="form-group row mb-4">
+										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">选择观影大厅</label>
+										<div class="col-sm-12 col-md-5">
+											<select class="form-control selectric" name="h_id">
+												<option value="xz">--请选择--</option>
+												<?php
+												foreach ($hall as $v) {
+													echo "<option id='{$v['HallSeating']}' value='{$v['id']}'>{$v['HallName']}</option>";
+												}
+												?>
+											</select>
+										</div>
+									</div>
+
+
+
+									<div class="form-group row mb-4">
+										<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+										<div class="col-sm-12 col-md-7">
+											<button class="btn btn-primary">确定新增</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./include/js/app.min.js"></script>
+	<!-- JS Libraies -->
+	<script src="./include/bundles/summernote/summernote-bs4.js"></script>
+	<script src="./include/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+	<script src="./include/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
+	<script src="./include/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+	<!-- Page Specific JS File -->
+	<script src="./include/js/page/create-post.js"></script>
+	<!-- Template JS File -->
+	<script src="./include/js/scripts.js"></script>
+	<!-- Custom JS File -->
+	<script src="./include/js/custom.js"></script>
+	<script>
+		var z_time;
+		var sj = false;
+		var sjs = false;
+		//大厅选择
+		$('[name=h_id]').change(function() {
+			var seating = $("[name=h_id]").find("[value=" + $(this).val() + "]").attr('id'); //得到当前座位数
+			$("[name=seating]").val(seating); //将当前座位数赋值给seatign元素
+
+		})
+
+		//影片选择
+		$('[name=m_id]').change(function() {
+			var m_time = $("[name=m_id]").find("[value=" + $(this).val() + "]").attr('time'); //总时间
+			z_time = m_time * 60;
+		})
+
+		//当开始时间失去鼠标焦点自动填写结束时间
+		$("[name=start_time]").blur(function() {
+			var reg = /^\d{1,2}:\d{1,2}$/;
+			var zz = reg.test($(this).val());
+			if (zz) {
+				var date = new Date('2019-11-11 ' + $(this).val() + ':00'); //将指定时间转换成时间戳
+				var start_time = date.getTime(date) / 1000; //得到指定时间的时间戳
+				var date2 = new Date((start_time + z_time) * 1000); //拼接结束时间
+				// console.log(end_time.getHours());
+				var end_time = date2.getHours() + ":" + date2.getMinutes();
+				$("[name=end_time]").val(end_time);
+				$(this).css('border-color', '');
+				sj = true;
+			} else {
+				$(this).css('border-color', 'red');
+				sj = false;
+			}
+		})
+
+		//当结束时间失去焦点时验证时间
+		$("[name=start_time]").blur(function() {
+			var reg = /^\d{1,2}:\d{1,2}$/;
+			var zz = reg.test($(this).val());
+			if (zz) {
+				$(this).css('border-color', '');
+				sjs = true;
+			} else {
+				$(this).css('border-color', 'red');
+				sjs = false;
+			}
+		})
+
+		//提交表单方法
+		$("[name=addForm]").submit(function() {
+			$("[name=start_time]").trigger('blur');
+			$("[name=end_time]").trigger('blur');
+			if (sj && sjs) {
+				return true;
+			} else {
+				return false;
+			}
+		})
+	</script>
+</body>
+
+</html>

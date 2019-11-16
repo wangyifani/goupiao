@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+	<title>用户列表</title>
+	<link rel="stylesheet" href="./include/css/app.min.css">
+	<link rel="stylesheet" href="./include/bundles/summernote/summernote-bs4.css">
+	<link rel="stylesheet" href="./include/bundles/jquery-selectric/selectric.css">
+	<link rel="stylesheet" href="./include/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+	<!-- Template CSS -->
+	<link rel="stylesheet" href="./include/css/style.css">
+	<link rel="stylesheet" href="./include/css/components.css">
+	<!-- Custom style CSS -->
+	<link rel="stylesheet" href="./include/css/custom.css">
+	<!-- <link rel='shortcut icon' type='image/x-icon' href='./include/images/login-logo.png'/> -->
+</head>
+
+<body>
+	<div class="loader"></div>
+	<div id="app">
+		<div class="main-wrapper">
+			<div class="navbar-bg"></div>
+			<nav class="navbar navbar-expand-lg main-navbar">
+				<div class="form-inline mr-auto">
+					<ul class="navbar-nav mr-3">
+						<li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+									  collapse-btn"> <i data-feather="align-justify"></i></a></li>
+						<li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
+								<i data-feather="maximize"></i>
+							</a></li>
+						<li>
+						</li>
+					</ul>
+				</div>
+				<ul class="navbar-nav navbar-right">
+					<li class=""><a href="index.php?m=index&a=out" class="nav-link" title="退出登录"><i data-feather="log-out"></i> </a>
+					</li>
+				</ul>
+			</nav>
+			<!-- 左侧栏开始 -->
+			<div class="main-sidebar">
+				<aside id="sidebar-wrapper">
+					<div class="sidebar-brand">
+						<a href="./index.php?m=index&a=index"><span class="logo-name">后台管理系统</span>
+						</a>
+					</div>
+					<div class="sidebar-user">
+						<div class="sidebar-user-picture">
+							<img alt="image" src="./include/images/user.png">
+						</div>
+						<div class="sidebar-user-details">
+							<div class="user-name">
+
+							</div>
+							<div class="user-role">
+
+							</div>
+						</div>
+					</div>
+					<ul class="sidebar-menu">
+						<li class="dropdown">
+							<a href="./index.php?m=index"><i data-feather="plus-circle"></i><span>添加新影片</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="./index.php?m=article&a=changci"><i data-feather="plus-circle"></i><span>添加场次</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="./index.php?m=article&a=show"><i data-feather="video"></i><span>影片管理</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="./index.php?m=user&a=show"><i data-feather="users"></i><span>用户管理</span></a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="nav-link has-dropdown"><i data-feather="settings"></i><span>站点管理员</span></a>
+						</li>
+					</ul>
+				</aside>
+			</div>
+			<!-- 左侧栏结束 -->
+			<div class="main-content">
+				<section class="section">
+					<div class="row">
+						<div class="col-12 col-sm-12 col-lg-12">
+							<div class="card">
+								<div class="card-header">
+									<!-- <h4 class="pull-left">管理员列表</h4> -->
+									<div class="float-left">
+										<form action="" method="post">
+											<div class="input-group">
+												<input type="search" name="search" class="form-control" placeholder="Search">
+												<div class="input-group-append">
+													<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+												</div>
+											</div>
+										</form>
+									</div>
+									<a href="#" class="btn btn-icon icon-left btn-info pull-right"><i data-feather="user-plus" style="width:18px;height:18px; margin-right:5px;margin-bottom:2px;"></i> </a>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive table-invoice">
+										<table class="table table-striped" name="userInfo">
+											<tr align="center">
+												<th width="110">用户ID</th>
+												<th>手机号</th>
+												<th>注册时间</th>
+												<th>账号状态</th>
+												<th>操作</th>
+											</tr>
+											<?php
+											foreach ($res as $v) {
+												$time = date('Y-m-d H:i', $v['utime']);
+												?>
+											<tr>
+												<td><?php echo $v['id']; ?></td>
+												<td><?php echo $v['phone']; ?></td>
+												<td><?php echo $time; ?></td>
+												<td id="<?php echo $v['id']; ?>"><?php echo $v['status'] == 1 ? '正常' : '封禁中'; ?></td>
+												<td>
+													<a href="javascript:void(0)" class="btn btn-danger" onclick="fj(<?php echo $v['id']; ?>)">封禁</a>
+													<a href="javascript:void(0)" class="btn btn-info" onclick="jcfj(<?php echo $v['id']; ?>)">解除封禁</a>
+												</td>
+											</tr>
+											<?php } ?>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- 管理员列表结束 -->
+			</div>
+		</div>
+	</div>
+	<!-- General JS Scripts -->
+	<script src="./include/js/app.min.js"></script>
+	<!-- JS Libraies -->
+	<script src="./include/bundles/echart/echarts.js"></script>
+	<script src="./include/bundles/chartjs/chart.min.js"></script>
+	<!-- Page Specific JS File -->
+	<script src="./include/js/page/index.js"></script>
+	<!-- Template JS File -->
+	<script src="./include/js/scripts.js"></script>
+	<!-- Custom JS File -->
+	<script src="./include/js/custom.js"></script>
+</body>
+<script>
+	//封禁用户
+	function fj(id) {
+		$.getJSON("./index.php", {
+			'm': 'user',
+			'a': 'fengjin',
+			'id': id
+		}, function(data) {
+			if (data) {
+				$('[name=userInfo]').find('#' + id).html('封禁中');
+			}
+		})
+	}
+
+	//解封用户
+	function jcfj(id) {
+		$.getJSON("./index.php", {
+			'm': 'user',
+			'a': 'nofengjin',
+			'id': id
+		}, function(data) {
+			if (data) {
+				$('[name=userInfo]').find('#' + id).html('正常');
+			}
+		})
+	}
+</script>
+
+</html>
