@@ -1,5 +1,4 @@
 <?php
-require "./public/config.php";
 //PDO版model类
 class Model{
 	public $pdo;
@@ -7,7 +6,7 @@ class Model{
 	public function __construct()
 	{
 		//数据库连接信息
-		$this->pdo = new PDO('mysql:host='.HOST.';dbname='.DBNAME.'', USER, PWD);
+		$this->pdo = new PDO('mysql:host=127.0.0.1;dbname=dy','root','root');
 		$this->pdo->exec("set names utf8");
 	}
 	//获取数据方法
