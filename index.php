@@ -11,7 +11,7 @@
 	$key='index';
 	//判断缓存
 	if(empty($redis->get($key))){
-		//无缓存准备查询数据库
+		//无缓存时候准备查询数据库
 		//准备sql
 		$sql="select m.*,r.m_id from movie as m, relss as r where m.id=r.m_id and m.status=1 group by r.m_id";
 		//执行sql
