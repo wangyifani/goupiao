@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-18 11:00:33
+/* Smarty version 3.1.33, created on 2019-11-18 11:00:22
   from '/Applications/MAMP/htdocs/goupiao/view/header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd20951e2b5a9_70488245',
-  'has_nocache_code' => false,
+  'unifunc' => 'content_5dd209466bbaa5_79435363',
+  'has_nocache_code' => true,
   'file_dependency' => 
   array (
     '45245fb987121d50a977bcbc6c2660f770dfece1' => 
     array (
       0 => '/Applications/MAMP/htdocs/goupiao/view/header.html',
-      1 => 1574046032,
+      1 => 1574046013,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd20951e2b5a9_70488245 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="header">
+function content_5dd209466bbaa5_79435363 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '4654853135dd2094665a6c5_49825798';
+?>
+<div class="header">
     <div class="container">
         <nav class="navbar navbar-default" style="background: #fff;border:1px;">
             <div class="container-fluid">
@@ -63,22 +65,28 @@ function content_5dd20951e2b5a9_70488245 (Smarty_Internal_Template $_smarty_tpl)
                         <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span>
                         </button>
                     </form>
+                    
                     <ul class="nav navbar-nav navbar-right">
-                        <?php if ($_smarty_tpl->tpl_vars['phone']->value == '') {?>
+                        <?php echo '/*%%SmartyNocache:4654853135dd2094665a6c5_49825798%%*/<?php if ($_smarty_tpl->tpl_vars[\'phone\']->value == \'\') {?>/*/%%SmartyNocache:4654853135dd2094665a6c5_49825798%%*/';?>
+
                         <li><a href="./login.php" style="color:royalblue;">登陆</a></li>
                         <li class="dropdown">
                             <a href="./reg.php" class="dropdown-toggle">注册</a>
                         </li>
-                        <?php } else { ?>
+                        <?php echo '/*%%SmartyNocache:4654853135dd2094665a6c5_49825798%%*/<?php } else { ?>/*/%%SmartyNocache:4654853135dd2094665a6c5_49825798%%*/';?>
+
                         <!-- 点击去个人中心 -->
-                        <li><a href="./center.php" style="color:royalblue;">欢迎: <?php echo $_smarty_tpl->tpl_vars['phone']->value;?>
+                        <li><a href="./center.php" style="color:royalblue;">欢迎: <?php echo '/*%%SmartyNocache:4654853135dd2094665a6c5_49825798%%*/<?php echo $_smarty_tpl->tpl_vars[\'phone\']->value;?>
+/*/%%SmartyNocache:4654853135dd2094665a6c5_49825798%%*/';?>
 </a></li>
                         <li class="dropdown">
                             <!-- 退出账号 -->
                             <a href="./action.php?a=out" class="dropdown-toggle">退出</a>
                         </li>
-                        <?php }?>
+                        <?php echo '/*%%SmartyNocache:4654853135dd2094665a6c5_49825798%%*/<?php }?>/*/%%SmartyNocache:4654853135dd2094665a6c5_49825798%%*/';?>
+
                     </ul>
+                    
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>

@@ -23,22 +23,26 @@ $tpl->assign('phone',$_SESSION['user']['phone']);
 
 $redis = new Redis();
 $redis->connect('127.0.0.1', 6379);
-//判断是否未付款且过期的座位,将缓存释放出来
-$sqler = "select order_time,s_code,num,r_id from morder where r_id={$_GET['rid']} and static=1";
-$ress = $mod->get($sqler);
-foreach ($ress as $value) {
-	//设置过期时间2分钟
-	$otime = $value['order_time'] + 120;
-	if ($otime < time()) {
-		//准备删除缓存中的座位
-		$sCode = explode(',', $value['s_code']);
-		foreach ($sCode as $sv) {
-			//删除指定缓存座位
-			//后面可以判断是否缓存中有值,然后再删除
-			$redis->srem('php44movie' . $_GET['rid'], $sv);
+
+//判断是否缓存中有值,然后再删除
+if ($redis->smembers('php44movie' . $_GET['rid'])) {
+	//判断是否未付款且过期的座位,将缓存释放出来
+	$sqler = "select order_time,s_code,num,r_id from morder where r_id={$_GET['rid']} and static=1";
+	$ress = $mod->get($sqler);
+	foreach ($ress as $value) {
+		//设置过期时间2分钟
+		$otime = $value['order_time'] + 120;
+		if ($otime < time()) {
+			//准备删除缓存中的座位
+			$sCode = explode(',', $value['s_code']);
+			foreach ($sCode as $sv) {
+				//删除指定缓存座位
+				$redis->srem('php44movie' . $_GET['rid'], $sv);
+			}
 		}
 	}
 }
+
 //已售座位
 $php44movie = $redis->smembers('php44movie' . $_GET['rid']);
 

@@ -200,7 +200,7 @@
 			];
 			$row=$link->Update($arr,$_POST['r_id']);
 			if($row){
-				echo "<script>alert('修改影片场次成功!');location='./index.php?m=article&a=show'</script>";
+				echo "<script>alert('修改影片场次成功!');location='./index.php?m=article&a=editRel&id={$_GET['id']}'</script>";
 			}else{
 				echo "<script>alert('修改影片场次失败!');location='./index.php?m=article&a=show'</script>";
 			}

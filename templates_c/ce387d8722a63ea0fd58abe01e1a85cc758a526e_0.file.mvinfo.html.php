@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-14 20:34:41
+/* Smarty version 3.1.33, created on 2019-11-18 11:24:05
   from '/Applications/MAMP/htdocs/goupiao/view/mvinfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dcd49e11ed8f8_65394432',
+  'unifunc' => 'content_5dd20ed5c79ad8_21667256',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:header.html' => 1,
   ),
 ),false)) {
-function content_5dcd49e11ed8f8_65394432 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd20ed5c79ad8_21667256 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
